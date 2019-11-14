@@ -1,0 +1,16 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>HTMLception</title>
+    <link rel="stylesheet" href="~/css/styles.css" type="text/css">
+</head>
+
+<body>
+    @ViewData["string"]<br />
+    @Html.Raw("This is an <em>HTML</em> text. <b>Enjoy yourself!</b>")
+</body>
+</html>

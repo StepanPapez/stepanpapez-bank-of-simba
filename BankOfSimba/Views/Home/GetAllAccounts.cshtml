@@ -1,0 +1,86 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>Bank of Simba - Acoounts</title>
+    <link rel="stylesheet" href="~/css/styles.css" type="text/css">
+</head>
+
+<body>
+    <h1>Bank of Simba</h1>
+    <h2>All Accounts</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Alignment</th>
+                <th>Type of animal</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@Model[i].Name</td>
+                    @if (Model[i].IsKing)
+                    {
+                        <td class="king">King</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    @if (Model[i].IsGood)
+                    {
+                        <td>Good One</td>
+                    }
+                    else
+                    {
+                        <td>Bad Guy</td>
+                    }
+                    <td>@Model[i].AnimalType</td>
+                    <td class="balance">@Model[i].Balance.ToString("0.00") Zebra</td>
+                    <td class="no-border">
+                        <form action="/raise-balance" method="post">
+                            <input type="hidden" name="name" value="@Model[i].Name" />
+                            <button class="button" type="submit">Raise</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>New account:</h3>
+    <form action="~/accounts" method="post">
+        <table>
+            <tr>
+                <td class="no-border"><label for="name">Name</label></td>
+                <td class="no-border"><input id="name" type="text" name="name" /></td>
+            </tr>
+            <tr>
+                <td class="no-border"><label for="balance">Starting balance</label></td>
+                <td class="no-border"><input id="balance" type="number" name="balance" /></td>
+            </tr>
+            <tr>
+                <td class="no-border"><label for="animalType">Type of animal</label></td>
+                <td class="no-border"><input id="animalType" type="text" name="animalType" /></td>
+            </tr>
+        </table>
+        <input id="isKing" type="checkbox" name="isKing" value="true"/>
+        <label for="isKing">King</label>
+        <br />
+        <input id="isGood" type="checkbox" name="isGood" value="true"/>
+        <label for="isGood">Good</label>
+        <br /> <br />
+        <button class="button" type="submit">Create a new account</button>
+    </form>
+</body>
+</html>

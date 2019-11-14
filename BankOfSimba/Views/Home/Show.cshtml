@@ -1,0 +1,31 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>Account of @Model.Name</title>
+    <link rel="stylesheet" href="~/css/styles.css" type="text/css">
+</head>
+
+<body>
+    <h1>Bank of Simba</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type of animal</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Name</td>
+                <td>@Model.AnimalType</td>
+                <td class="balance">@Model.Balance.ToString("0.00") Zebra</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
